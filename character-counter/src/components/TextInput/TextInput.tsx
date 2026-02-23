@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { TextInputProps } from "../../types";
 
-const TextInput = ({ onTextChange, placeholder = "", initialValue = "" }: TextInputProps) => {
+const TextInput = ({ onTextChange, placeholder = "Type here...", initialValue = "" }: TextInputProps) => {
 	const [value, setValue] = useState(initialValue);
 
 	const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

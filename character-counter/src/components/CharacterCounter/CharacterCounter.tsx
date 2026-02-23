@@ -8,43 +8,46 @@ import TextInput from "../TextInput/TextInput.tsx";
 //     return 'test'
 //   };
 
-const CharacterCounter = ({ wordCount, minWords, maxWords }: CharacterCounterProps) => {
-	const getProgress = () => {
-		if (!maxWords || maxWords === 0) return 0;
-		return; /////////////////// not finished
-	};
+const CharacterCounter = ({ minWords, maxWords }: CharacterCounterProps) => {
+  const getProgress = () => {
+    if (!maxWords || maxWords === 0) return 0;
+    return; /////////////////// not finished
+  };
 
-	const [text, setText] = useState<string>("");
+  const [text, setText] = useState<string>("");
 
-	const words = text.trim().split(" ").length;
-	const characters = text.length;
-	const readingTime = parseFloat((words / 200).toFixed(2)); // 200 wpm
+  const words = text
+    .trim()
+    .split(" ")
+    .filter((x) => x.length > 0).length;
+  const characters = text.length;
+  const readingTime = parseFloat((words / 200).toFixed(2)); // 200 wpm
 
-	const stats: TextStats = {
-		characterCount: characters,
-		wordCount: words,
-		readingTime,
-	};
+  const stats: TextStats = {
+    characterCount: characters,
+    wordCount: words,
+    readingTime,
+  };
 
-	const progress = getProgress();
+  return (
+    <div className="counter">
+      <TextInput
+        onTextChange={setText}
+        placeholder="Start typing your content here..."
+      />
 
-	return (
-		<div className="counter">
-			<TextInput
-				onTextChange={setText}
-				placeholder="Start typing your content here..."
-			/>
+      <StatsDisplay
+        stats={stats}
+        showReadingTime={stats.wordCount > 0}
+        minWords={minWords}
+        maxWords={maxWords}
+      />
 
-			<StatsDisplay
-				stats={stats}
-				showReadingTime
-			/>
-
-			<p>
-				{wordCount} / {maxWords} words
-			</p>
-		</div>
-	);
+      <p>
+        {minWords} / {maxWords} words
+      </p>
+    </div>
+  );
 };
 
 export default CharacterCounter;
