@@ -8,7 +8,11 @@ import TextInput from "../TextInput/TextInput.tsx";
 //     return 'test'
 //   };
 
-const CharacterCounter = ({ minWords, maxWords }: CharacterCounterProps) => {
+const CharacterCounter = ({
+  minWords,
+  maxWords,
+  targetReadingTime = 2,
+}: CharacterCounterProps) => {
   const getProgress = () => {
     if (!maxWords || maxWords === 0) return 0;
     return; /////////////////// not finished
@@ -29,6 +33,8 @@ const CharacterCounter = ({ minWords, maxWords }: CharacterCounterProps) => {
     readingTime,
   };
 
+  const isTargetMet = targetReadingTime < stats.readingTime;
+
   return (
     <div className="counter">
       <TextInput
@@ -45,6 +51,9 @@ const CharacterCounter = ({ minWords, maxWords }: CharacterCounterProps) => {
 
       <p>
         {minWords} / {maxWords} words
+      </p>
+      <p style={{ color: isTargetMet ? "white" : "red" }}>
+        TargetReading Time: {targetReadingTime} minutes
       </p>
     </div>
   );

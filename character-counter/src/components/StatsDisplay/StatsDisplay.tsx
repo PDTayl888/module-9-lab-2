@@ -1,6 +1,6 @@
 import type { StatsDisplayProps } from "../../types";
 
-const StatsDisplay = ({ stats, showReadingTime = false, minWords, maxWords }: StatsDisplayProps) => {
+const StatsDisplay = ({ stats, showReadingTime = false, minWords = 0, maxWords = Infinity }: StatsDisplayProps) => {
 
     const isOutsideMinMax = stats.wordCount < minWords || stats.wordCount > maxWords;
 

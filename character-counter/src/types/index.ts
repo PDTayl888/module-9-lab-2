@@ -24,5 +24,5 @@ export interface CharacterCounterProps {
   //wordCount: number;
   minWords?: number;
   maxWords?: number;
-  //targetReadingTime?: number; // in minutes
+  targetReadingTime?: number; // in minutes
 }
