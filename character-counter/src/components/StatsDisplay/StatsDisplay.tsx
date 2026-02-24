@@ -26,7 +26,11 @@ const StatsDisplay = ({
       <p style={{ color: isOutsideMinMax ? "red" : "white" }}>
         Words: {stats.wordCount}
       </p>
-      {showReadingTime && <p style={{ background: "black", color: "white" }}>Reading Time: {stats.readingTime} minutes</p>}
+      {showReadingTime && (
+        <p style={{ background: "black", color: "white" }}>
+          Reading Time: {stats.readingTime} minutes
+        </p>
+      )}
     </div>
   );
 };
