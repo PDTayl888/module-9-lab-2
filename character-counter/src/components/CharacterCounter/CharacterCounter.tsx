@@ -11,13 +11,8 @@ import TextInput from "../TextInput/TextInput.tsx";
 const CharacterCounter = ({
   minWords,
   maxWords,
-  targetReadingTime = 2,
+  targetReadingTime = .25,
 }: CharacterCounterProps) => {
-  const getProgress = () => {
-    if (!maxWords || maxWords === 0) return 0;
-    return; /////////////////// not finished
-  };
-
   const [text, setText] = useState<string>("");
 
   const words = text
@@ -25,7 +20,7 @@ const CharacterCounter = ({
     .split(" ")
     .filter((x) => x.length > 0).length;
   const characters = text.length;
-  const readingTime = parseFloat((words / 200).toFixed(2)); // 200 wpm
+  const readingTime = parseFloat((words / 200).toFixed(2)); 
 
   const stats: TextStats = {
     characterCount: characters,
@@ -46,13 +41,13 @@ const CharacterCounter = ({
         stats={stats}
         showReadingTime={stats.wordCount > 0}
         minWords={minWords}
-        maxWords={maxWords}
+        maxWords={maxWords}wq
       />
 
-      <p>
-        {minWords} / {maxWords} words
+      <p style={{ borderRadius: '12px', background: "black", color: "white" }}>
+        min {minWords} / max {maxWords} 
       </p>
-      <p style={{ color: isTargetMet ? "white" : "red" }}>
+      <p style={{ borderRadius: '12px', background: "black", color: isTargetMet ? "white" : "red" }}>
         TargetReading Time: {targetReadingTime} minutes
       </p>
     </div>
