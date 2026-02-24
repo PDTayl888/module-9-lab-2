@@ -3,10 +3,6 @@ import type { CharacterCounterProps, TextStats } from "../../types";
 import StatsDisplay from "../StatsDisplay/StatsDisplay.tsx";
 import TextInput from "../TextInput/TextInput.tsx";
 
-////// example
-// const example = (): string => {;
-//     return 'test'
-//   };
 
 const CharacterCounter = ({
   minWords,
